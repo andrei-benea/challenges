@@ -49,63 +49,27 @@ export default class ChallengesObjects {
     // for : 'April' print 'easter',
     // for everything else print 'not to be considered'
     async challengeFour() {
-        // let month;
-        ///// switch (new Date().getMonth())
-        const year = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+        const year = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         let len = year.length;
-        for (let i = 0; i < len ; i++) {
-            console.log(i)
-            console.log(typeof year)
-            console.log(year)
-            let index = Object.keys(year)[i]
-            switch (index) {
-                case 0:
-                    index = 'January';
-                    console.log('not to be considered')
+        for (let i = 0; i < len; i++) {
+            switch (year[i]) {
+                case 'June':
+                    console.log('June: strawberries')
                     break;
-                case 1:
-                    index = 'February';
-                    console.log('ski')
+                case 'December':
+                    console.log('December: snow')
                     break;
-                case 2:
-                    index = 'March';
-                    console.log('not to be considered')
+                case 'September':
+                    console.log('September: colors')
                     break;
-                case 3:
-                    index = 'April';
-                    console.log('easter')
+                case 'February':
+                    console.log('February: ski')
                     break;
-                case 4:
-                    index = 'May';
-                    console.log('not to be considered')
+                case 'April':
+                    console.log('April: easter')
                     break;
-                case 5:
-                    index = 'June';
-                    console.log('strawberries')
-                    break;
-                case 6:
-                    index = 'July';
-                    console.log('not to be considered')
-                    break;
-                case 7:
-                    index = 'August';
-                    console.log('not to be considered')
-                    break;
-                case 8:
-                    index = 'September';
-                    console.log('colors')
-                    break;
-                case 9:
-                    index = 'October';
-                    console.log('not to be considered')
-                    break;
-                case 10:
-                    index = 'November';
-                    console.log('not to be considered')
-                    break;
-                case 11:
-                    index = 'December';
-                    console.log('snow')
+                default:
+                    console.log('Everything else: not to be considered')
                     break;
             }
         }
