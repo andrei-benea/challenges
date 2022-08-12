@@ -10,6 +10,9 @@ describe('Creating a new company on LE', async () => {
         await challenges.challengeTwo();
     })
     it('challenge 3', async () => {
+        await challenges.challengeThree();
+    })
+    it('challenge 4', async () => {
         await challenges.challengeFour();
     })
     it('challenge 5', async () => {
