@@ -1,5 +1,3 @@
-import { generate, parse, transform, stringify } from 'csv';
-
 export default class ChallengesObjects {
     url = 'www.google.com';
     elements = {
@@ -159,22 +157,12 @@ export default class ChallengesObjects {
         fs.readFile('tests_input/listOfCars.json', 'utf8', (err, data) => {
             if (err) throw err;
             else {
-                // let x = 0;
-                // const generator = generate({ seed: 1, columns: 2, length: 20 });
-                // const parser = parse();
-                // const transformer = transform(function (data) {
-                //     x++;
-                //     return data.map(function (value) { return value.toUpperCase(); });
-                // });
-                // const stringifier = stringify();
                 const myLogger = new Console({
-                    stdout: fs.createWriteStream("./tests_output/normalStdout.csv"),
+                    stdout: fs.createWriteStream("./tests_output/normalStdOut.csv"),
                     stderr: fs.createWriteStream("./tests_output/errStdErr.csv")
                 });
                 let myData = JSON.parse(data)
                 let len = myData.length
-                myLogger.log('parsed json: ' + myData)
-                myLogger.log('json length: ' + len)
                 for (let i = 0; i <= len - 1; i++) {
                     myLogger.count('Loop: ')
                     let b = myData[i].brand;
@@ -185,19 +173,19 @@ export default class ChallengesObjects {
                     let n = myData[i].nrOfDoors;
                     let car = [b, m, c, k, r, n];
                     if (car[0] == 'Fiat') {
-                        myLogger.log('this car is made by Fiat: ' + b)
+                        myLogger.log('car is "Fiat" ' + b)
                     }
                     if (car[2] == 'Red') {
-                        myLogger.log('this car is red: ' + b)
+                        myLogger.log('car is red ' + b)
                     }
                     if (car[3] < 100000) {
-                        myLogger.log('this car has good mileage: ' + b)
+                        myLogger.log('car has few km ' + b)
                     }
                     if (car[4] < 2015) {
-                        myLogger.log('this car is pretty old: ' + b)
+                        myLogger.log('car is old' + b)
                     }
                 }
-                console.log('Saved to output file!')
+                console.log('Saved to file!')
             }
         })
     }
