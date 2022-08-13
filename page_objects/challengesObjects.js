@@ -117,8 +117,41 @@ export default class ChallengesObjects {
             const data = fs.readFileSync('tests_input/input.txt', 'utf8');
             console.log(data);
             fs.writeFileSync('tests_output/output.txt', data)
+            console.log('Saved to output.txt !')
         } catch (err) {
             console.error(err);
+        }
+    }
+    async challenge1p2() {
+        const fs = require('fs')
+        try {
+            const data = fs.readFileSync('tests_input/input.txt', 'utf8');
+            let rep = data.replace('$', '')
+            fs.writeFileSync('tests_output/output2.txt', rep)
+            console.log('Saved to output2.txt !')
+        } catch (err) {
+            console.error(err);
+        }
+    }
+    async challenge1p3() {
+        const fs = require('fs')
+        try {
+            const data = fs.readFileSync('tests_input/input.txt', 'utf8');
+            let regxp = /2/;
+            let len = data.length;
+            let r = '';
+            for (let i = 0; i <= len - 1; i++) {
+                if (data[i].match(regxp)) {
+                    r += data[i].replace(regxp, '');
+                }
+                else {
+                    r += data[i]
+                }
+            }
+            fs.writeFileSync('tests_output/output3.txt', r)
+            console.log('Saved to output3.txt !')
+        } catch (err) {
+            console.error(err)
         }
     }
     // Create a list of Cars in a <listOfCars.json> file with the following JSON structure:   
