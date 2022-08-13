@@ -110,6 +110,16 @@ export default class ChallengesObjects {
         arr.splice(48, 1, '1313');
         console.log(arr)
     }
+    // Convert the 6 challenges from Easy_Mode to read the data from a input.txt file in your project. Write the results in a  output.txt file
+    async challenge1() {
+        const fs = require('fs')
+        try {
+            const data = fs.readFileSync('tests_input/input.txt', 'utf8');
+            console.log(data);
+        } catch (err) {
+            console.error(err);
+        }
+    }
     // Create a list of Cars in a <listOfCars.json> file with the following JSON structure:   
     // Brand(string), Model(string), Color(string), Km(Number), ReleaseDate(Date), NrOfDoors(number).
     // Display all cars before 2015.
@@ -117,38 +127,36 @@ export default class ChallengesObjects {
     // Display all cars made by Fiat
     // Display all cars bellow 100.000Km
     async challenge2() {
-        const fs = require('fs');
-        fs.readFile('tests_input/listOfCars.json', 'utf8', (err, data) => {
-            if (err) throw err;
-            else {
-                let myData = JSON.parse(data)
-                let len = myData.length
-                console.log('parsed json: ' + myData)
-                console.log('json length: ' + len)
-                for (let i = 0; i <= len - 1; i++) {
-                    console.count('Loop: ')
-                    let b = myData[i].brand;
-                    let m = myData[i].model;
-                    let c = myData[i].color;
-                    let k = myData[i].km;
-                    let r = myData[i].releaseDate;
-                    let n = myData[i].nrOfDoors;
-                    let car = [b, m, c, k, r, n];
-                    if (car[0] == 'Fiat') {
-                        console.log('this car is made by Fiat: ' + b)
-                    }
-                    if (car[2] == 'Red') {
-                        console.log('this car is red: ' + b)
-                    }
-                    if (car[3] < 100000) {
-                        console.log('this car has good mileage: ' + b)
-                    }
-                    if (car[4] < 2015) {
-                        console.log('this car is pretty old: ' + b)
-                    }
+        const fs = require('fs')
+        try {
+            const data = fs.readFileSync('tests_input/listOfCars.json', 'utf8');
+            let myData = JSON.parse(data)
+            let len = myData.length
+            for (let i = 0; i <= len - 1; i++) {
+                console.count('Loop: ')
+                let b = myData[i].brand;
+                let m = myData[i].model;
+                let c = myData[i].color;
+                let k = myData[i].km;
+                let r = myData[i].releaseDate;
+                let n = myData[i].nrOfDoors;
+                let car = [b, m, c, k, r, n];
+                if (car[0] == 'Fiat') {
+                    console.log('this car is made by Fiat: ' + b)
+                }
+                if (car[2] == 'Red') {
+                    console.log('this car is red: ' + b)
+                }
+                if (car[3] < 100000) {
+                    console.log('this car has good mileage: ' + b)
+                }
+                if (car[4] < 2015) {
+                    console.log('this car is pretty old: ' + b)
                 }
             }
-        })
+        } catch (err) {
+            console.error(err);
+        }
     }
     // Using Advanced Challenge 2, write to a CSV file all the displayed data.
     async challenge3() {
@@ -164,7 +172,6 @@ export default class ChallengesObjects {
                 let myData = JSON.parse(data)
                 let len = myData.length
                 for (let i = 0; i <= len - 1; i++) {
-                    myLogger.count('Loop: ')
                     let b = myData[i].brand;
                     let m = myData[i].model;
                     let c = myData[i].color;
@@ -173,19 +180,19 @@ export default class ChallengesObjects {
                     let n = myData[i].nrOfDoors;
                     let car = [b, m, c, k, r, n];
                     if (car[0] == 'Fiat') {
-                        myLogger.log('car is "Fiat" ' + b)
+                        myLogger.log('car is made by "Fiat": ' + m)
                     }
                     if (car[2] == 'Red') {
-                        myLogger.log('car is red ' + b)
+                        myLogger.log('car is red: ' + b)
                     }
                     if (car[3] < 100000) {
-                        myLogger.log('car has few km ' + b)
+                        myLogger.log('car has only a few km: ' + b)
                     }
                     if (car[4] < 2015) {
-                        myLogger.log('car is old' + b)
+                        myLogger.log('car is too old: ' + b)
                     }
                 }
-                console.log('Saved to file!')
+                console.log('Console output saved to file!')
             }
         })
     }
