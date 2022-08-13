@@ -37,12 +37,18 @@ export default class ChallengesObjects {
         });
         readline.question(`Input any sequence of numbers then press ENTER: `, name => {
             let re = /2/;
-            if (name.match(re)) {
-                console.log('Removing 2 from input: ' + name.replace(re, ''))
+            let len = name.length;
+            let str = name.toString();
+            let r = '';
+            for (let i = 0; i <= len - 1; i++) {
+                if (str[i].match(re)){
+                    r += str[i].replace(re, '');
+                }
+                else {
+                    r += str[i];
+                }
             }
-            else {
-                console.log('Try again. GOODBYE!');
-            }
+            console.log('Removing "dirty" numbers: ' + r);
             readline.close();
         });
     }
