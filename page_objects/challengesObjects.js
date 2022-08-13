@@ -154,6 +154,38 @@ export default class ChallengesObjects {
             console.error(err)
         }
     }
+    async challenge1p4() {
+        const fs = require('fs');
+        const { Console } = require('console');
+        const myLogger = new Console({
+            stdout: fs.createWriteStream('./tests_output/output4.txt'),
+            stderr: fs.createWriteStream('./tests_output/output4err.txt')
+        });
+        try {
+            let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+            let len = months.length;
+            const data = fs.readFileSync('tests_input/input.txt', 'utf8');
+            for (let i = 0; i <= len - 1; i++) {
+                if (data.includes(months[i])) {
+                    myLogger.log('Txt file contains: ' + months[i])
+                    switch (months[i]) {
+                        case 'June':
+                            myLogger.log('June: strawberries')
+                            break;
+                        case 'December':
+                            myLogger.log('December: snow')
+                            break;
+                        default:
+                            myLogger.log('Everything else: not to be considered')
+                            break;
+                    }
+                }
+            }
+            console.log('Saved to output4.txt !')
+        } catch (err) {
+            console.error(err);
+        }
+    }
     // Create a list of Cars in a <listOfCars.json> file with the following JSON structure:   
     // Brand(string), Model(string), Color(string), Km(Number), ReleaseDate(Date), NrOfDoors(number).
     // Display all cars before 2015.
