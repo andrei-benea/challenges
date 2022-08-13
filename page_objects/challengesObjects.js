@@ -115,11 +115,6 @@ export default class ChallengesObjects {
         fs.readFile('tests_input/listOfCars.json', 'utf8', (err, data) => {
             if (err) throw err;
             else {
-                const { Console } = require("console");
-                const myLogger = new Console({
-                    stdout: fs.createWriteStream("/tests_output/normalStdout.txt"), // a write stream,
-                    stderr: fs.createWriteStream("/tests_output/errStdErr.txt"), // a write stream
-                });
                 let myData = JSON.parse(data)
                 let len = myData.length
                 console.log('parsed json: ' + myData)
@@ -150,10 +145,42 @@ export default class ChallengesObjects {
         })
     }
     async challenge3() {
-        // const { Console } = require("console");
-        // const myLogger = new Console({
-        //     stdout: "", // a write stream,
-        //     stderr: "", // a write stream
-        //   });
+        const fs = require('fs');
+        fs.readFile('tests_input/listOfCars.json', 'utf8', (err, data) => {
+            if (err) throw err;
+            else {
+                const { Console } = require("console");
+                const myLogger = new Console({
+                    stdout: fs.createWriteStream("./tests_output/normalStdout.txt"), // a write stream,
+                    stderr: fs.createWriteStream("./tests_output/errStdErr.txt"), // a write stream
+                });
+                let myData = JSON.parse(data)
+                let len = myData.length
+                myLogger.log('parsed json: ' + myData)
+                myLogger.log('json length: ' + len)
+                for (let i = 0; i <= len - 1; i++) {
+                    myLogger.count('Loop: ')
+                    let b = myData[i].brand;
+                    let m = myData[i].model;
+                    let c = myData[i].color;
+                    let k = myData[i].km;
+                    let r = myData[i].releaseDate;
+                    let n = myData[i].nrOfDoors;
+                    let car = [b, m, c, k, r, n];
+                    if (car[0] == 'Fiat') {
+                        myLogger.log('this car is made by Fiat: ' + b)
+                    }
+                    if (car[2] == 'Red') {
+                        myLogger.log('this car is red: ' + b)
+                    }
+                    if (car[3] < 100000) {
+                        myLogger.log('this car has good mileage: ' + b)
+                    }
+                    if (car[4] < 2015) {
+                        myLogger.log('this car is pretty old: ' + b)
+                    }
+                }
+            }
+        })
     }
 }
