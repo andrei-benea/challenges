@@ -1,3 +1,5 @@
+import { generate, parse, transform, stringify } from 'csv';
+
 export default class ChallengesObjects {
     url = 'www.google.com';
     elements = {
@@ -41,7 +43,7 @@ export default class ChallengesObjects {
             let str = name.toString();
             let r = '';
             for (let i = 0; i <= len - 1; i++) {
-                if (str[i].match(re)){
+                if (str[i].match(re)) {
                     r += str[i].replace(re, '');
                 }
                 else {
@@ -150,12 +152,21 @@ export default class ChallengesObjects {
             }
         })
     }
+    // Using Advanced Challenge 2, write to a CSV file all the displayed data.
     async challenge3() {
+        const { Console } = require("console");
         const fs = require('fs');
         fs.readFile('tests_input/listOfCars.json', 'utf8', (err, data) => {
             if (err) throw err;
             else {
-                const { Console } = require("console");
+                // let x = 0;
+                // const generator = generate({ seed: 1, columns: 2, length: 20 });
+                // const parser = parse();
+                // const transformer = transform(function (data) {
+                //     x++;
+                //     return data.map(function (value) { return value.toUpperCase(); });
+                // });
+                // const stringifier = stringify();
                 const myLogger = new Console({
                     stdout: fs.createWriteStream("./tests_output/normalStdout.csv"),
                     stderr: fs.createWriteStream("./tests_output/errStdErr.csv")
