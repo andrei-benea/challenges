@@ -2,7 +2,7 @@ import Objects from "../page_objects/challengesObjects";
 
 const challenges = new Objects();
 
-describe('Creating a new company on LE', async () => {
+describe('Easy Mode Challenges', async () => {
     it('challenge 1', async () => {
         await challenges.challengeOne();
     })

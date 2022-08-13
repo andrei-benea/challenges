@@ -41,7 +41,7 @@ export default class ChallengesObjects {
                 console.log(name.replace(re, ''))
             }
             else {
-                console.log('Try again. GOODBYE!');    
+                console.log('Try again. GOODBYE!');
             }
             readline.close();
         });
@@ -103,5 +103,57 @@ export default class ChallengesObjects {
         console.log(arr)
         arr.splice(48, 1, '1313');
         console.log(arr)
+    }
+    // Create a list of Cars in a <listOfCars.json> file with the following JSON structure:   
+    // Brand(string), Model(string), Color(string), Km(Number), ReleaseDate(Date), NrOfDoors(number).
+    // Display all cars before 2015.
+    // Display all red cars.
+    // Display all cars made by Fiat
+    // Display all cars bellow 100.000Km
+    async challenge2() {
+        const fs = require('fs');
+        fs.readFile('tests_input/listOfCars.json', 'utf8', (err, data) => {
+            if (err) throw err;
+            else {
+                const { Console } = require("console");
+                const myLogger = new Console({
+                    stdout: fs.createWriteStream("/tests_output/normalStdout.txt"), // a write stream,
+                    stderr: fs.createWriteStream("/tests_output/errStdErr.txt"), // a write stream
+                });
+                let myData = JSON.parse(data)
+                let len = myData.length
+                console.log('parsed json: ' + myData)
+                console.log('json length: ' + len)
+                for (let i = 0; i <= len - 1; i++) {
+                    console.count('Loop: ')
+                    let b = myData[i].brand;
+                    let m = myData[i].model;
+                    let c = myData[i].color;
+                    let k = myData[i].km;
+                    let r = myData[i].releaseDate;
+                    let n = myData[i].nrOfDoors;
+                    let car = [b, m, c, k, r, n];
+                    if (car[0] == 'Fiat') {
+                        console.log('this car is made by Fiat: ' + b)
+                    }
+                    if (car[2] == 'Red') {
+                        console.log('this car is red: ' + b)
+                    }
+                    if (car[3] < 100000) {
+                        console.log('this car has good mileage: ' + b)
+                    }
+                    if (car[4] < 2015) {
+                        console.log('this car is pretty old: ' + b)
+                    }
+                }
+            }
+        })
+    }
+    async challenge3() {
+        // const { Console } = require("console");
+        // const myLogger = new Console({
+        //     stdout: "", // a write stream,
+        //     stderr: "", // a write stream
+        //   });
     }
 }
