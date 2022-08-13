@@ -157,8 +157,8 @@ export default class ChallengesObjects {
             else {
                 const { Console } = require("console");
                 const myLogger = new Console({
-                    stdout: fs.createWriteStream("./tests_output/normalStdout.txt"), // a write stream,
-                    stderr: fs.createWriteStream("./tests_output/errStdErr.txt"), // a write stream
+                    stdout: fs.createWriteStream("./tests_output/normalStdout.csv"),
+                    stderr: fs.createWriteStream("./tests_output/errStdErr.csv")
                 });
                 let myData = JSON.parse(data)
                 let len = myData.length
@@ -186,6 +186,7 @@ export default class ChallengesObjects {
                         myLogger.log('this car is pretty old: ' + b)
                     }
                 }
+                console.log('Saved to output file!')
             }
         })
     }
