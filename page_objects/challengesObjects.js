@@ -35,10 +35,10 @@ export default class ChallengesObjects {
             input: process.stdin,
             output: process.stdout,
         });
-        readline.question(`Input any sequence of numbers then press ENTER`, name => {
-            let re = /2/
+        readline.question(`Input any sequence of numbers then press ENTER: `, name => {
+            let re = /2/;
             if (name.match(re)) {
-                console.log(name.replace(re, ''))
+                console.log('Removing 2 from input: ' + name.replace(re, ''))
             }
             else {
                 console.log('Try again. GOODBYE!');

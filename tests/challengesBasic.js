@@ -9,9 +9,6 @@ describe('Easy Mode Challenges', async () => {
     it('challenge 2', async () => {
         await challenges.challengeTwo();
     })
-    it('challenge 3', async () => {
-        await challenges.challengeThree();
-    })
     it('challenge 4', async () => {
         await challenges.challengeFour();
     })
@@ -20,5 +17,8 @@ describe('Easy Mode Challenges', async () => {
     })
     it('challenge 6', async () => {
         await challenges.challengeSix();
+    })
+    it('challenge 3', async () => {
+        await challenges.challengeThree();
     })
 })
