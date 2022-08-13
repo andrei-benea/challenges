@@ -122,6 +122,7 @@ export default class ChallengesObjects {
             console.error(err);
         }
     }
+    // Convert the 6 challenges from Easy_Mode to read the data from a input.txt file in your project. Write the results in a  output.txt file
     async challenge1p2() {
         const fs = require('fs')
         try {
@@ -133,6 +134,7 @@ export default class ChallengesObjects {
             console.error(err);
         }
     }
+    // Convert the 6 challenges from Easy_Mode to read the data from a input.txt file in your project. Write the results in a  output.txt file
     async challenge1p3() {
         const fs = require('fs')
         try {
@@ -154,6 +156,7 @@ export default class ChallengesObjects {
             console.error(err)
         }
     }
+    // Convert the 6 challenges from Easy_Mode to read the data from a input.txt file in your project. Write the results in a  output.txt file
     async challenge1p4() {
         const fs = require('fs');
         const { Console } = require('console');
@@ -185,6 +188,16 @@ export default class ChallengesObjects {
         } catch (err) {
             console.error(err);
         }
+    }
+    // Convert the 6 challenges from Easy_Mode to read the data from a input.txt file in your project. Write the results in a  output.txt file
+    async challenge1p5() {
+        const fs = require('fs');
+        let data = fs.readFileSync('tests_input/input.txt', 'utf8');
+        let regxp = /(\d{1,10})/;
+        if (regxp.test(data)) {
+            console.log('We found numbers!');
+        }
+        else return;
     }
     // Create a list of Cars in a <listOfCars.json> file with the following JSON structure:   
     // Brand(string), Model(string), Color(string), Km(Number), ReleaseDate(Date), NrOfDoors(number).

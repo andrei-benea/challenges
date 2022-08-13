@@ -15,6 +15,9 @@ describe('Advanced Mode Challenges', async () => {
     it('challenge 1p4', async () => {
         await challenges.challenge1p4();
     })
+    it('challenge 1p5', async () => {
+        await challenges.challenge1p5();
+    })
     it('challenge 2', async () => {
         await challenges.challenge2();
     })
