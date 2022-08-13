@@ -116,6 +116,7 @@ export default class ChallengesObjects {
         try {
             const data = fs.readFileSync('tests_input/input.txt', 'utf8');
             console.log(data);
+            fs.writeFileSync('tests_output/output.txt', data)
         } catch (err) {
             console.error(err);
         }
@@ -160,40 +161,40 @@ export default class ChallengesObjects {
     }
     // Using Advanced Challenge 2, write to a CSV file all the displayed data.
     async challenge3() {
-        const { Console } = require("console");
         const fs = require('fs');
-        fs.readFile('tests_input/listOfCars.json', 'utf8', (err, data) => {
-            if (err) throw err;
-            else {
-                const myLogger = new Console({
-                    stdout: fs.createWriteStream("./tests_output/normalStdOut.csv"),
-                    stderr: fs.createWriteStream("./tests_output/errStdErr.csv")
-                });
-                let myData = JSON.parse(data)
-                let len = myData.length
-                for (let i = 0; i <= len - 1; i++) {
-                    let b = myData[i].brand;
-                    let m = myData[i].model;
-                    let c = myData[i].color;
-                    let k = myData[i].km;
-                    let r = myData[i].releaseDate;
-                    let n = myData[i].nrOfDoors;
-                    let car = [b, m, c, k, r, n];
-                    if (car[0] == 'Fiat') {
-                        myLogger.log('car is made by "Fiat": ' + m)
-                    }
-                    if (car[2] == 'Red') {
-                        myLogger.log('car is red: ' + b)
-                    }
-                    if (car[3] < 100000) {
-                        myLogger.log('car has only a few km: ' + b)
-                    }
-                    if (car[4] < 2015) {
-                        myLogger.log('car is too old: ' + b)
-                    }
+        const { Console } = require("console");
+        const myLogger = new Console({
+            stdout: fs.createWriteStream("./tests_output/normalStdOut.csv"),
+            stderr: fs.createWriteStream("./tests_output/errStdErr.csv")
+        });
+        try {
+            const data = fs.readFileSync('tests_input/listOfCars.json', 'utf8')
+            let myData = JSON.parse(data)
+            let len = myData.length
+            for (let i = 0; i <= len - 1; i++) {
+                let b = myData[i].brand;
+                let m = myData[i].model;
+                let c = myData[i].color;
+                let k = myData[i].km;
+                let r = myData[i].releaseDate;
+                let n = myData[i].nrOfDoors;
+                let car = [b, m, c, k, r, n];
+                if (car[0] == 'Fiat') {
+                    myLogger.log('car is made by "Fiat": ' + m)
                 }
-                console.log('Console output saved to file!')
+                if (car[2] == 'Red') {
+                    myLogger.log('car is red: ' + b)
+                }
+                if (car[3] < 100000) {
+                    myLogger.log('car has only a few km: ' + b)
+                }
+                if (car[4] < 2015) {
+                    myLogger.log('car is too old: ' + b)
+                }
             }
-        })
+            console.log('Console output saved to file!')
+        } catch (err) {
+            console.error(err);
+        }
     }
 }
