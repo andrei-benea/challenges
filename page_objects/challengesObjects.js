@@ -45,19 +45,9 @@ export default class ChallengesObjects {
             output: process.stdout,
         });
         readline.question(`Input any sequence of numbers then press ENTER: `, name => {
-            let re = /2/g;
-            let len = name.length;
+            let regex = /2/g;
             let str = name.toString();
-            let r = '';
-            for (let i = 0; i <= len - 1; i++) {
-                if (str[i].match(re)) {
-                    r += str[i].replace(re, '');
-                }
-                else {
-                    r += str[i];
-                }
-            }
-            console.log('Removing "dirty" numbers: ' + r);
+            console.log('Removing "dirty" numbers: ' + str.replace(regex, ''));
             readline.close();
         });
     }
