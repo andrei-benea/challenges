@@ -237,6 +237,7 @@ export default class ChallengesObjects {
                 }
             }
             else console.log('File does not contain numbers. Try again!')
+            console.log('Saved to output5.txt !')
         } catch (err) {
             console.error(err);
         }
@@ -260,6 +261,7 @@ export default class ChallengesObjects {
             myLogger.log(arr)
             arr.splice(48, 1, '1313')
             myLogger.log(arr)
+            console.log('Saved to output6.txt !')
         } catch (err) {
             console.error(err);
         }
