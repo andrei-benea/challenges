@@ -354,10 +354,21 @@ export default class ChallengesObjects {
     // Given a following PDF file, verify if the content of it contains the word "proper".
     async challenge4() {
         const fs = require('fs');
+        const { PdfReader } = require('pdfreader');
         try {
-            let data = fs.readFileSync('tests_input/textTest.pdf', 'utf8');
-            console.log(data)
-            console.log('Console output!')
+            new PdfReader().parseFileItems("tests_input/textTest.pdf", (err, item) => {
+                if (err) throw err
+                else if (!item) {
+                    console.warn('END OF FILE!')
+                }
+                else if (item.text) {
+                    let n = item.text;
+                    // fs.openSync('tests_output/pdf-export.txt', 'w')
+                    fs.appendFileSync('tests_output/pdf-export.txt', n + ' ')
+                    const data = fs.readFileSync('tests_output/pdf-export.txt', 'utf8')
+                    // console.log('data is: ' + data)
+                }
+            });
         } catch (err) {
             console.error(err)
         }

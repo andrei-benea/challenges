@@ -29,6 +29,7 @@
     "csv": "^6.2.0",
     "csv-parser": "^3.0.0",
     "nightwatch": "^2.3.0",
-    "pdfjs": "^2.4.7"
+    "pdf-viewer": "^0.8.1",
+    "pdfreader": "^2.0.0"
   }
 }
