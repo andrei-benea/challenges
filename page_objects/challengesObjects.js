@@ -242,6 +242,29 @@ export default class ChallengesObjects {
         }
     }
     ////////////////////////////////////////////////
+    /////////////CHALLENGE ADVANCED 1.6/////////////
+    ////////////////////////////////////////////////
+    // Generate an array of Strings that contains numbers from 1 to 100. Display each array element. Replace number 49 with 1313.
+    async challenge1p6() {
+        const fs = require('fs');
+        const { Console } = require('console');
+        const myLogger = new Console({
+            stdout: fs.createWriteStream('./tests_output/output6.txt'),
+            stderr: fs.createWriteStream('./tests_output/output6err.txt')
+        });
+        try {
+            let arr = [];
+            for (let i = 1; i < 101; i++) {
+                arr.push(i.toString())
+            }
+            myLogger.log(arr)
+            arr.splice(48, 1, '1313')
+            myLogger.log(arr)
+        } catch (err) {
+            console.error(err);
+        }
+    }
+    ////////////////////////////////////////////////
     /////////////CHALLENGE ADVANCED 2///////////////
     ////////////////////////////////////////////////
     // Create a list of Cars in a <listOfCars.json> file with the following JSON structure:   
