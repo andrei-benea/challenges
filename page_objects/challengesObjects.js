@@ -348,4 +348,18 @@ export default class ChallengesObjects {
             console.error(err);
         }
     }
+    ////////////////////////////////////////////////
+    /////////////CHALLENGE ADVANCED 4///////////////
+    ////////////////////////////////////////////////
+    // Given a following PDF file, verify if the content of it contains the word "proper".
+    async challenge4() {
+        const fs = require('fs');
+        try {
+            let data = fs.readFileSync('tests_input/textTest.pdf', 'utf8');
+            console.log(data)
+            console.log('Console output!')
+        } catch (err) {
+            console.error(err)
+        }
+    }
 }
