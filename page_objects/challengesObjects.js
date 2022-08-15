@@ -93,10 +93,8 @@ export default class ChallengesObjects {
     ////////////////////////////////////////////
     // Verify if a number is equal to it in reverse.(return true or false).
     async challengeFive() {
-        let n1 = 333;
-        let n2 = 334;
-        let check1 = this.checkreversed(n1);
-        let check2 = this.checkreversed(n2);
+        let check1 = this.checkreversed(334);
+        let check2 = this.checkreversed(333);
         console.log(await check1);
         console.log(await check2);
     }
@@ -236,7 +234,6 @@ export default class ChallengesObjects {
                     let check = this.checkreversed(parseInt(numbers[i]));
                     myLogger.log(numbers[i])
                     myLogger.log(await check)
-                    // await this.checkreversed(parseInt(numbers[i]))
                 }
             }
             else console.log('File does not contain numbers. Try again!')
