@@ -3,6 +3,9 @@ export default class ChallengesObjects {
     elements = {
 
     };
+    ////////////////////////////////////////////
+    //////////////CHALLENGE EASY 1//////////////
+    ////////////////////////////////////////////
     // Print a String, a number and a Date in miliseconds in the console using parametrized strings
     async challengeOne() {
         let str = 'string';
@@ -12,6 +15,9 @@ export default class ChallengesObjects {
         console.log(`String is ${nr}`)
         console.log(`String is ${dt}`)
     }
+    ////////////////////////////////////////////
+    //////////////CHALLENGE EASY 2//////////////
+    ////////////////////////////////////////////
     // Print 2 Strings combined and the String 'Test$*&' without the $ sign. Print the result reversed.
     async challengeTwo() {
         let str = 'string';
@@ -29,6 +35,9 @@ export default class ChallengesObjects {
         }
         console.log(rev)
     }
+    ////////////////////////////////////////////
+    //////////////CHALLENGE EASY 3//////////////
+    ////////////////////////////////////////////
     // Input from the command line a number, and if it contains 2 as a character, remove it
     async challengeThree() {
         const readline = require('readline').createInterface({
@@ -36,7 +45,7 @@ export default class ChallengesObjects {
             output: process.stdout,
         });
         readline.question(`Input any sequence of numbers then press ENTER: `, name => {
-            let re = /2/;
+            let re = /2/g;
             let len = name.length;
             let str = name.toString();
             let r = '';
@@ -52,6 +61,9 @@ export default class ChallengesObjects {
             readline.close();
         });
     }
+    ////////////////////////////////////////////
+    //////////////CHALLENGE EASY 4//////////////
+    ////////////////////////////////////////////
     ////////////////////////////////////
     //From an array of Months, using a switch conditional, print : 
     // for : 'June', print 'strawberries', 
@@ -86,6 +98,10 @@ export default class ChallengesObjects {
             }
         }
     }
+    ////////////////////////////////////////////
+    //////////////CHALLENGE EASY 5//////////////
+    ////////////////////////////////////////////
+    // Verify if a number is equal to it in reverse.(return true or false).
     async challengeFive() {
         await this.checkreversed(334);
         await this.checkreversed(333);
@@ -100,6 +116,9 @@ export default class ChallengesObjects {
         }
         return console.log(final === temp);
     }
+    ////////////////////////////////////////////
+    //////////////CHALLENGE EASY 6//////////////
+    ////////////////////////////////////////////
     // Generate an array of Strings that contains numbers from 1 to 100. Display each array element. Replace number 49 with 1313.
     async challengeSix() {
         let arr = Array();
@@ -110,6 +129,9 @@ export default class ChallengesObjects {
         arr.splice(48, 1, '1313');
         console.log(arr)
     }
+    ////////////////////////////////////////////////
+    /////////////CHALLENGE ADVANCED 1///////////////
+    ////////////////////////////////////////////////
     // Convert the 6 challenges from Easy_Mode to read the data from a input.txt file in your project. Write the results in a  output.txt file
     async challenge1() {
         const fs = require('fs')
@@ -122,6 +144,9 @@ export default class ChallengesObjects {
             console.error(err);
         }
     }
+    ////////////////////////////////////////////////
+    /////////////CHALLENGE ADVANCED 1.2/////////////
+    ////////////////////////////////////////////////
     // Convert the 6 challenges from Easy_Mode to read the data from a input.txt file in your project. Write the results in a  output.txt file
     async challenge1p2() {
         const fs = require('fs')
@@ -134,6 +159,9 @@ export default class ChallengesObjects {
             console.error(err);
         }
     }
+    ////////////////////////////////////////////////
+    /////////////CHALLENGE ADVANCED 1.3/////////////
+    ////////////////////////////////////////////////
     // Convert the 6 challenges from Easy_Mode to read the data from a input.txt file in your project. Write the results in a  output.txt file
     async challenge1p3() {
         const fs = require('fs')
@@ -156,6 +184,9 @@ export default class ChallengesObjects {
             console.error(err)
         }
     }
+    ////////////////////////////////////////////////
+    /////////////CHALLENGE ADVANCED 1.4/////////////
+    ////////////////////////////////////////////////
     // Convert the 6 challenges from Easy_Mode to read the data from a input.txt file in your project. Write the results in a  output.txt file
     async challenge1p4() {
         const fs = require('fs');
@@ -189,16 +220,37 @@ export default class ChallengesObjects {
             console.error(err);
         }
     }
+    ////////////////////////////////////////////////
+    /////////////CHALLENGE ADVANCED 1.5/////////////
+    ////////////////////////////////////////////////
     // Convert the 6 challenges from Easy_Mode to read the data from a input.txt file in your project. Write the results in a  output.txt file
     async challenge1p5() {
         const fs = require('fs');
-        let data = fs.readFileSync('tests_input/input.txt', 'utf8');
-        let regxp = /(\d{1,10})/;
-        if (regxp.test(data)) {
-            console.log('We found numbers!');
+        const { Console } = require('console');
+        const myLogger = new Console({
+            stdout: fs.createWriteStream('./tests_output/output5.txt'),
+            stderr: fs.createWriteStream('./tests_output/output5err.txt')
+        });
+        try {
+            let data = fs.readFileSync('tests_input/input.txt', 'utf8');
+            let regxp = /(\d{1,10})/g;
+            if (regxp.test(data)) {
+                let numbers = data.match(regxp);
+                let len = numbers.length;
+                myLogger.log('The following numbers were identified: ' + numbers);
+                for (let i = 0; i <= len - 1; i++) {
+                    myLogger.log(numbers[i])
+                    await this.checkreversed(parseInt(numbers[i]))
+                }
+            }
+            else console.log('File does not contain numbers. Try again!')
+        } catch (err) {
+            console.error(err);
         }
-        else return;
     }
+    ////////////////////////////////////////////////
+    /////////////CHALLENGE ADVANCED 2///////////////
+    ////////////////////////////////////////////////
     // Create a list of Cars in a <listOfCars.json> file with the following JSON structure:   
     // Brand(string), Model(string), Color(string), Km(Number), ReleaseDate(Date), NrOfDoors(number).
     // Display all cars before 2015.
@@ -237,6 +289,9 @@ export default class ChallengesObjects {
             console.error(err);
         }
     }
+    ////////////////////////////////////////////////
+    /////////////CHALLENGE ADVANCED 3///////////////
+    ////////////////////////////////////////////////
     // Using Advanced Challenge 2, write to a CSV file all the displayed data.
     async challenge3() {
         const fs = require('fs');
