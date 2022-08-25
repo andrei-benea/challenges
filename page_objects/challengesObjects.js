@@ -352,23 +352,37 @@ export default class ChallengesObjects {
     /////////////CHALLENGE ADVANCED 4///////////////
     ////////////////////////////////////////////////
     // Given a following PDF file, verify if the content of it contains the word "proper".
-    async challenge4() {
-        const fs = require('fs');
-        const { PdfReader } = require('pdfreader');
+    // async challenge4() {
+    //     const fs = require('fs');
+    //     const { PdfReader } = require('pdfreader');
+    //     try {
+    //         new PdfReader().parseFileItems("tests_input/textTest.pdf", (err, item) => {
+    //             if (err) throw err
+    //             else if (!item) {
+    //                 console.warn('END OF FILE!')
+    //             }
+    //             else if (item.text) {
+    //                 let n = item.text;
+    //                 let regex = /proper/g;
+    //                 fs.appendFileSync('tests_output/pdf-export.txt', n + ' ')
+    //                 const data = fs.readFileSync('tests_output/pdf-export.txt', 'utf8')
+    //                 if (data.match(regex))
+    //             }
+    //         });
+    //     } catch (err) {
+    //         console.error(err)
+    //     }
+    // }
+    ////////////////////////////////////////////////
+    /////////////CHALLENGE ADVANCED 5///////////////
+    ////////////////////////////////////////////////
+    // Print up the number of files in a folder.
+    async challenge5() {
         try {
-            new PdfReader().parseFileItems("tests_input/textTest.pdf", (err, item) => {
-                if (err) throw err
-                else if (!item) {
-                    console.warn('END OF FILE!')
-                }
-                else if (item.text) {
-                    let n = item.text;
-                    // fs.openSync('tests_output/pdf-export.txt', 'w')
-                    fs.appendFileSync('tests_output/pdf-export.txt', n + ' ')
-                    const data = fs.readFileSync('tests_output/pdf-export.txt', 'utf8')
-                    // console.log('data is: ' + data)
-                }
-            });
+            const fs = require('fs');
+            const dir = './tests_output/';
+            const allFiles = fs.readdirSync(dir)
+            console.log('Nr. of files in the output folder is: ' + allFiles.length)
         } catch (err) {
             console.error(err)
         }
