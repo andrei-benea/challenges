@@ -387,4 +387,50 @@ export default class ChallengesObjects {
             console.error(err)
         }
     }
+    // 6. Generate a square matrix of n elements with random numbers and write it to a XML file.
+    // Read it from the file and print each element with text 'value:' in front of each value.
+    ////////////////////////////////////////////////
+    /////////////CHALLENGE ADVANCED 6///////////////
+    ////////////////////////////////////////////////
+    // Ex:   [1,43,54,212]         [value:1,value:43,value:54,value:212]
+    // 		 [7,33,52,23 ]   =>    [value:7,value:33,value:52,value:23 ]
+    // 		 [32,673,2,66]         [value:32,value:673,value:2,value:66]                     
+    // 		 [9,40,29,660]         [value:9,value:40,value:29,value:660]
+    async challenge6() {
+        let n = 4;
+        let array = [];
+        let arrayX = [];
+        let i = 0;
+        let j = 0;
+        for (j = 0; j < n; j++) {
+            for (i = 0; i < n; i++) {
+                let number = Math.floor(Math.random() * 9999999);
+                arrayX.push(number)
+                console.count('inner for: ')
+                console.log(arrayX);
+            }
+            array.push(arrayX);
+            arrayX = [];
+            console.count('outer for: ')
+            console.log(array);
+        }
+        let str = array.toString();
+        const fs = require('fs');
+        try {
+            fs.writeFileSync('tests_output/output66.xml', str)
+            console.log('Saved to output66.xml !')
+        } catch (err) {
+            console.error(err);
+        }
+        try {
+            let data = fs.readFileSync('tests_output/output66.xml')
+            let strg = data.toString();
+            let val = 'value:';
+            let regexxp = /,/g;
+            console.log(strg);
+            console.log(val + strg.replace(regexxp, val));
+        } catch (err) {
+            console.error(err);
+        }
+    }
 }
